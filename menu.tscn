@@ -1,0 +1,356 @@
+[gd_scene load_steps=36 format=3 uid="uid://b4u2n4e7g4mas"]
+
+[ext_resource type="Texture2D" uid="uid://dvij04eibwlg" path="res://tex/line.png" id="1_1pxom"]
+[ext_resource type="Script" path="res://scripts/end_trigger.gd" id="2_h8iky"]
+[ext_resource type="Script" path="res://scripts/starts.gd" id="3_nhpq6"]
+[ext_resource type="Script" path="res://scripts/death.gd" id="5_7yilo"]
+[ext_resource type="PackedScene" uid="uid://dhs80k7tantrp" path="res://assets/key_g.tscn" id="6_mt27v"]
+[ext_resource type="PackedScene" uid="uid://dxntmoq0g87ot" path="res://assets/key_r.tscn" id="7_ta3vt"]
+[ext_resource type="PackedScene" uid="uid://8sirerxco513" path="res://assets/key_y.tscn" id="8_bl1eq"]
+[ext_resource type="PackedScene" uid="uid://btjkdwh37xn7o" path="res://assets/key_b.tscn" id="9_ufc3l"]
+[ext_resource type="PackedScene" uid="uid://c4gsexh3mu07o" path="res://assets/key_o.tscn" id="10_jkcls"]
+[ext_resource type="Texture2D" uid="uid://cdhyqs1aiw52y" path="res://tex/wall.png" id="11_t1m7j"]
+[ext_resource type="PackedScene" uid="uid://cbdpqvgjdr8as" path="res://assets/note_b.tscn" id="12_1rxjr"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="13_m3vok"]
+[ext_resource type="Environment" uid="uid://kt3eth1wwd3p" path="res://env.tres" id="13_r6oos"]
+[ext_resource type="FontFile" uid="uid://csrlv1nf6q0ef" path="res://LEMONMILK-Medium.otf" id="14_5i8hq"]
+[ext_resource type="Theme" uid="uid://bql7cl8mw1fd4" path="res://theme.tres" id="14_5yvit"]
+[ext_resource type="Texture2D" uid="uid://cyhfyhyp8isq0" path="res://tex/play.png" id="15_vd4mr"]
+[ext_resource type="Texture2D" uid="uid://vssci0hl4326" path="res://tex/settings.png" id="16_ar0rq"]
+[ext_resource type="Texture2D" uid="uid://b3iyjdfcgspm8" path="res://tex/quit.png" id="17_8xvsh"]
+[ext_resource type="PackedScene" uid="uid://b1gxc3gny0x5q" path="res://settings.tscn" id="19_5y8se"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_disev"]
+size = Vector3(13.1575, 7.67218, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0rm8"]
+size = Vector3(14, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d2awo"]
+size = Vector3(1, 14, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4oxq"]
+size = Vector3(21.1179, 1, 55.8628)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hprsv"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rcxjq"]
+material = SubResource("StandardMaterial3D_hprsv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4f3r"]
+size = Vector3(28.0897, 28.2398, 6.39424)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8ie2"]
+shading_mode = 0
+albedo_texture = ExtResource("11_t1m7j")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kefhi"]
+material = SubResource("StandardMaterial3D_l8ie2")
+size = Vector2(40, 2)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fq2sh"]
+dof_blur_far_distance = 0.01
+dof_blur_near_distance = 0.01
+dof_blur_near_transition = 741.06
+
+[sub_resource type="Animation" id="Animation_jh4xk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0oit8"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qmki"]
+_data = {
+"RESET": SubResource("Animation_jh4xk"),
+"fade_out": SubResource("Animation_0oit8")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmchc"]
+font = ExtResource("14_5i8hq")
+font_size = 100
+shadow_color = Color(1, 1, 1, 0.0627451)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykyyg"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3nbir"]
+material = SubResource("StandardMaterial3D_ykyyg")
+flip_faces = true
+
+[node name="menu" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Lines" type="Node" parent="Level"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 6.46388, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 3.90954, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 1.33426, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -1.2829, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -3.73255, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Level/Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -6.20315, 0, 5.04376)
+texture = ExtResource("1_1pxom")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, -0.755808, 0.654794, 0, -0.654794, -0.755808, 0, 8.84904, -10.7163)
+
+[node name="End" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.1044)
+script = ExtResource("2_h8iky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/End"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93788, 0)
+shape = SubResource("BoxShape3D_disev")
+
+[node name="Starts" type="Node" parent="Level"]
+script = ExtResource("3_nhpq6")
+
+[node name="1" type="Node3D" parent="Level/Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96368, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Level/Starts/1"]
+
+[node name="2" type="Node3D" parent="Level/Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47876, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Level/Starts/2"]
+
+[node name="3" type="Node3D" parent="Level/Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00865856, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Level/Starts/3"]
+
+[node name="4" type="Node3D" parent="Level/Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52002, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Level/Starts/4"]
+
+[node name="5" type="Node3D" parent="Level/Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14876, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Level/Starts/5"]
+
+[node name="Spawner" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.80301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Spawner"]
+shape = SubResource("BoxShape3D_u0rm8")
+
+[node name="Walls" type="Node" parent="Level"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Walls/StaticBody3D"]
+shape = SubResource("BoxShape3D_d2awo")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Level/Walls"]
+transform = Transform3D(-0.00200717, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00200717, 0.422482, 0, -16.6734)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Walls/StaticBody3D3"]
+shape = SubResource("BoxShape3D_d2awo")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54814, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Walls/StaticBody3D2"]
+shape = SubResource("BoxShape3D_d2awo")
+
+[node name="Death" type="Area3D" parent="Level"]
+script = ExtResource("5_7yilo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Death"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40013, 0)
+shape = SubResource("BoxShape3D_v4oxq")
+
+[node name="Death2" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.6766)
+script = ExtResource("5_7yilo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Death2"]
+transform = Transform3D(27.8511, 0, 0, 0, 27.8511, 0, 0, 0, -6.11935, 0, 0, 0)
+mesh = SubResource("BoxMesh_rcxjq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Death2"]
+shape = SubResource("BoxShape3D_d4f3r")
+
+[node name="Keys" type="Node" parent="Level"]
+
+[node name="key_g" parent="Level/Keys" instance=ExtResource("6_mt27v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92023, 0, 25.1369)
+
+[node name="key_r" parent="Level/Keys" instance=ExtResource("7_ta3vt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42134, 0, 25.0975)
+
+[node name="key_y" parent="Level/Keys" instance=ExtResource("8_bl1eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.0713)
+
+[node name="key_b" parent="Level/Keys" instance=ExtResource("9_ufc3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70752, 0, 25.0757)
+
+[node name="key_o" parent="Level/Keys" instance=ExtResource("10_jkcls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25657, 0, 25.0173)
+
+[node name="note_b" parent="Level" instance=ExtResource("12_1rxjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6028, 0, -11.8757)
+first = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -7.71439, 2.75094, 6.2224)
+mesh = SubResource("PlaneMesh_kefhi")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.284015, -0.304238, 0.909271, 0, 0.948324, 0.317305, -0.95882, 0.0901194, -0.269338, 18.2789, 8.15013, -3.6611)
+environment = ExtResource("13_r6oos")
+attributes = SubResource("CameraAttributesPractical_fq2sh")
+current = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_m3vok")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_6qmki")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "NOTE HERO"
+label_settings = SubResource("LabelSettings_mmchc")
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 161.0
+offset_right = 240.0
+offset_bottom = 217.0
+theme = ExtResource("14_5yvit")
+text = " PLAY"
+icon = ExtResource("15_vd4mr")
+alignment = 0
+
+[node name="Button2" type="Button" parent="UI"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 221.0
+offset_right = 240.0
+offset_bottom = 277.0
+theme = ExtResource("14_5yvit")
+text = " SETTINGS"
+icon = ExtResource("16_ar0rq")
+alignment = 0
+
+[node name="Button3" type="Button" parent="UI"]
+visible = false
+layout_mode = 2
+offset_left = 20.0
+offset_top = 281.0
+offset_right = 240.0
+offset_bottom = 337.0
+theme = ExtResource("14_5yvit")
+text = " QUIT"
+icon = ExtResource("17_8xvsh")
+alignment = 0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="settings" parent="UI" instance=ExtResource("19_5y8se")]
+visible = false
+layout_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(97.0338, 0, 0, 0, 97.0338, 0, 0, 0, 97.0338, 0, 0, 0)
+mesh = SubResource("BoxMesh_3nbir")
+
+[connection signal="body_exited" from="Level/End" to="Level/End" method="_on_body_exited"]
+[connection signal="timeout" from="Level/Starts/1/Timer" to="Level/Starts" method="one_on_timer_timeout"]
+[connection signal="timeout" from="Level/Starts/2/Timer" to="Level/Starts" method="two_on_timer_timeout"]
+[connection signal="timeout" from="Level/Starts/3/Timer" to="Level/Starts" method="three_on_timer_timeout"]
+[connection signal="timeout" from="Level/Starts/4/Timer" to="Level/Starts" method="four_on_timer_timeout"]
+[connection signal="timeout" from="Level/Starts/5/Timer" to="Level/Starts" method="five_on_timer_timeout"]
+[connection signal="body_entered" from="Level/Spawner" to="Level/Starts" method="_on_spawner_body_entered"]
+[connection signal="body_entered" from="Level/Death" to="Level/Death" method="_on_body_entered"]
+[connection signal="body_entered" from="Level/Death2" to="Level/Death2" method="_on_body_entered"]
+[connection signal="animation_finished" from="UI/AnimationPlayer" to="UI" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="UI/Button" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Button2" to="UI" method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/Button3" to="UI" method="_on_button_3_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bafy7ua420wbn"]
+
+[ext_resource type="PackedScene" uid="uid://dhbuvkd8bfkmu" path="res://assets/player.tscn" id="1_e1lhu"]
+[ext_resource type="PackedScene" uid="uid://dxva06fjrpyv8" path="res://assets/note_g.tscn" id="3_wber5"]
+[ext_resource type="PackedScene" uid="uid://cagtubbr4c7er" path="res://assets/note_o.tscn" id="5_5grgm"]
+
+[node name="debug" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_e1lhu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.51062, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.827336, 0.561708, 0, -0.561708, 0.827336, 0, 6.87387, 9.907)
+shadow_enabled = true
+
+[node name="note_g" parent="." instance=ExtResource("3_wber5")]
+
+[node name="note_o" parent="." instance=ExtResource("5_5grgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24894, 0, 0)

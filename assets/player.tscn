@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dod6t4ob04haf"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_rhgr8"]
+[ext_resource type="Environment" uid="uid://dj6rwgwerxvse" path="res://env.tres" id="2_8tlkd"]
+[ext_resource type="PackedScene" uid="uid://b6xwm2hjsfkdm" path="res://assets/arms.tscn" id="3_be5b5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lxaky"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_rhgr8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_lxaky")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.814059, 0.250385)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+environment = ExtResource("2_8tlkd")
+current = true
+fov = 70.0
+
+[node name="Arms" parent="Head" instance=ExtResource("3_be5b5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.814059, -0.250385)
+
+[node name="Fire" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -20)
+
+[node name="GroundCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.1, 0)

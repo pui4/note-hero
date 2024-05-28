@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bql7cl8mw1fd4"]
+
+[ext_resource type="FontFile" uid="uid://csrlv1nf6q0ef" path="res://LEMONMILK-Medium.otf" id="1_hhcyl"]
+
+[resource]
+default_font = ExtResource("1_hhcyl")
+default_font_size = 30

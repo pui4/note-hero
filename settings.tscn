@@ -1,0 +1,186 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gxc3gny0x5q"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_md53e"]
+[ext_resource type="FontFile" uid="uid://csrlv1nf6q0ef" path="res://LEMONMILK-Medium.otf" id="2_wqt00"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_md53e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+
+[node name="VIDEO" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VIDEO" type="GridContainer" parent="MarginContainer/TabContainer/VIDEO"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "DISPLAY MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+item_count = 3
+selected = 1
+popup/item_0/text = "FULLSCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "WINDOWED"
+popup/item_1/id = 1
+popup/item_2/text = "BORDERLESS"
+popup/item_2/id = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "VSYNC"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/VIDEO/VIDEO"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/VIDEO"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[node name="AUDIO" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/AUDIO"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/AUDIO/GridContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/AUDIO/GridContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "MUSIC"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/TabContainer/AUDIO/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+button_pressed = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/AUDIO/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/AUDIO/GridContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "MASTER VOLUME"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/AUDIO/GridContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/AUDIO"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[node name="GAMEPLAY" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/GAMEPLAY"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer"]
+layout_mode = 2
+text = "NOTE: THIS OPTIONS MAY CAUSE ISSUES"
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "SPAWN RATE"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 40
+text = "START SPEED"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/TabContainer/GAMEPLAY/GridContainer"]
+layout_mode = 2
+max_value = 5.0
+value = 2.0
+
+[node name="Button" type="Button" parent="MarginContainer/TabContainer/GAMEPLAY"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_wqt00")
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[connection signal="item_selected" from="MarginContainer/TabContainer/VIDEO/VIDEO/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="MarginContainer/TabContainer/VIDEO/VIDEO/CheckButton" to="." method="_on_vsync_button_toggled"]
+[connection signal="pressed" from="MarginContainer/TabContainer/VIDEO/Button" to="." method="_on_v_close_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/AUDIO/GridContainer/HBoxContainer/CheckButton" to="." method="_on_check_music_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/AUDIO/GridContainer/HSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/AUDIO/Button" to="." method="_on_a_close_pressed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/GAMEPLAY/GridContainer/HSlider" to="." method="_on_s_rate_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/GAMEPLAY/GridContainer/HSlider2" to="." method="_on_s_speed_value_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/GAMEPLAY/Button" to="." method="_on_g_close_pressed"]

@@ -1,0 +1,220 @@
+[gd_scene load_steps=27 format=3 uid="uid://vaqfasha3acm"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_bvafo"]
+[ext_resource type="PackedScene" uid="uid://dhbuvkd8bfkmu" path="res://assets/player.tscn" id="1_nx5lu"]
+[ext_resource type="Texture2D" uid="uid://dvij04eibwlg" path="res://tex/line.png" id="2_8dfg1"]
+[ext_resource type="Script" path="res://scripts/end_trigger.gd" id="4_a1ksk"]
+[ext_resource type="Script" path="res://scripts/starts.gd" id="5_mmyjp"]
+[ext_resource type="PackedScene" uid="uid://coxtfd4qr83c1" path="res://ui.tscn" id="6_ydefl"]
+[ext_resource type="Script" path="res://scripts/death.gd" id="7_vnqaw"]
+[ext_resource type="PackedScene" uid="uid://dhs80k7tantrp" path="res://assets/key_g.tscn" id="8_1ttln"]
+[ext_resource type="PackedScene" uid="uid://dxntmoq0g87ot" path="res://assets/key_r.tscn" id="9_nb0kk"]
+[ext_resource type="PackedScene" uid="uid://8sirerxco513" path="res://assets/key_y.tscn" id="10_1mtxs"]
+[ext_resource type="PackedScene" uid="uid://btjkdwh37xn7o" path="res://assets/key_b.tscn" id="11_lnhww"]
+[ext_resource type="PackedScene" uid="uid://c4gsexh3mu07o" path="res://assets/key_o.tscn" id="12_goftw"]
+[ext_resource type="PackedScene" uid="uid://deosorrggwvwp" path="res://assets/note_y.tscn" id="12_ubwm4"]
+[ext_resource type="Texture2D" uid="uid://cdhyqs1aiw52y" path="res://tex/wall.png" id="13_4yhcn"]
+[ext_resource type="PackedScene" uid="uid://b6ti6drip5n5x" path="res://esc.tscn" id="15_wo7ec"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_anj64"]
+size = Vector3(13.1575, 7.67218, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4wfj"]
+size = Vector3(14, 7, 0.001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4bkr"]
+size = Vector3(1, 14, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylxbe"]
+size = Vector3(21.1179, 1, 55.8628)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2u8e"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nmds7"]
+material = SubResource("StandardMaterial3D_k2u8e")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dfeus"]
+size = Vector3(28.0897, 28.2398, 6.39424)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op4dt"]
+shading_mode = 0
+albedo_texture = ExtResource("13_4yhcn")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cydeg"]
+material = SubResource("StandardMaterial3D_op4dt")
+size = Vector2(40, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8banj"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlxiu"]
+material = SubResource("StandardMaterial3D_8banj")
+flip_faces = true
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_bvafo")
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 6.46388, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 3.90954, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, 1.33426, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -1.2829, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -3.73255, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Lines"]
+transform = Transform3D(1, 0, 0, 0, -1.70951e-07, -1, 0, 3.91091, -4.37114e-08, -6.20315, 0, 5.04376)
+texture = ExtResource("2_8dfg1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.755808, 0.654794, 0, -0.654794, -0.755808, 0, 8.84904, -10.7163)
+
+[node name="End" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.9262)
+script = ExtResource("4_a1ksk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93788, 0)
+shape = SubResource("BoxShape3D_anj64")
+
+[node name="Starts" type="Node" parent="."]
+script = ExtResource("5_mmyjp")
+
+[node name="1" type="Node3D" parent="Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96368, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Starts/1"]
+
+[node name="2" type="Node3D" parent="Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47876, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Starts/2"]
+
+[node name="3" type="Node3D" parent="Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00865856, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Starts/3"]
+
+[node name="4" type="Node3D" parent="Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52002, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Starts/4"]
+
+[node name="5" type="Node3D" parent="Starts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14876, 0, -14.9419)
+
+[node name="Timer" type="Timer" parent="Starts/5"]
+
+[node name="Spawner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.80301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spawner"]
+shape = SubResource("BoxShape3D_c4wfj")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D"]
+shape = SubResource("BoxShape3D_p4bkr")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-0.00200717, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00200717, 0.422482, 0, -16.6734)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D3"]
+shape = SubResource("BoxShape3D_p4bkr")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54814, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D2"]
+shape = SubResource("BoxShape3D_p4bkr")
+
+[node name="ui" parent="." instance=ExtResource("6_ydefl")]
+
+[node name="Death" type="Area3D" parent="."]
+script = ExtResource("7_vnqaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Death"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40013, 0)
+shape = SubResource("BoxShape3D_ylxbe")
+
+[node name="Death2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.6766)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Death2"]
+transform = Transform3D(27.8511, 0, 0, 0, 27.8511, 0, 0, 0, -6.11935, 0, 0, 0)
+mesh = SubResource("BoxMesh_nmds7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Death2"]
+shape = SubResource("BoxShape3D_dfeus")
+
+[node name="Keys" type="Node" parent="."]
+
+[node name="key_g" parent="Keys" instance=ExtResource("8_1ttln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92023, 0, 25.1369)
+
+[node name="key_r" parent="Keys" instance=ExtResource("9_nb0kk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42134, 0, 25.0975)
+
+[node name="key_y" parent="Keys" instance=ExtResource("10_1mtxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.0713)
+
+[node name="key_b" parent="Keys" instance=ExtResource("11_lnhww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70752, 0, 25.0757)
+
+[node name="key_o" parent="Keys" instance=ExtResource("12_goftw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25657, 0, 25.0173)
+
+[node name="Player" parent="." instance=ExtResource("1_nx5lu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0410438, 1.39809, -11.7837)
+
+[node name="note_y" parent="." instance=ExtResource("12_ubwm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.741)
+first = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -7.71439, 2.75094, 6.2224)
+mesh = SubResource("PlaneMesh_cydeg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 8.8085, 2.75094, 6.2224)
+mesh = SubResource("PlaneMesh_cydeg")
+
+[node name="esc" parent="." instance=ExtResource("15_wo7ec")]
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(97.0338, 0, 0, 0, 97.0338, 0, 0, 0, 97.0338, 0, 0, 0)
+mesh = SubResource("BoxMesh_rlxiu")
+
+[connection signal="body_exited" from="End" to="End" method="_on_body_exited"]
+[connection signal="timeout" from="Starts/1/Timer" to="Starts" method="one_on_timer_timeout"]
+[connection signal="timeout" from="Starts/2/Timer" to="Starts" method="two_on_timer_timeout"]
+[connection signal="timeout" from="Starts/3/Timer" to="Starts" method="three_on_timer_timeout"]
+[connection signal="timeout" from="Starts/4/Timer" to="Starts" method="four_on_timer_timeout"]
+[connection signal="timeout" from="Starts/5/Timer" to="Starts" method="five_on_timer_timeout"]
+[connection signal="body_entered" from="Spawner" to="Starts" method="_on_spawner_body_entered"]
+[connection signal="body_entered" from="Death" to="Death" method="_on_body_entered"]

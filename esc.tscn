@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6ti6drip5n5x"]
+
+[ext_resource type="Script" path="res://scripts/esc.gd" id="1_gf7ex"]
+[ext_resource type="FontFile" uid="uid://bncfu372o15od" path="res://LEMONMILK-MediumItalic.otf" id="1_n0dmg"]
+[ext_resource type="FontFile" uid="uid://csrlv1nf6q0ef" path="res://LEMONMILK-Medium.otf" id="2_ir2jh"]
+[ext_resource type="Texture2D" uid="uid://cyhfyhyp8isq0" path="res://tex/play.png" id="3_8dgsv"]
+[ext_resource type="Texture2D" uid="uid://cidkxfodyw8fi" path="res://tex/menu.png" id="4_38oxy"]
+[ext_resource type="Texture2D" uid="uid://b3iyjdfcgspm8" path="res://tex/quit.png" id="5_iyic3"]
+[ext_resource type="Texture2D" uid="uid://vssci0hl4326" path="res://tex/settings.png" id="5_l4hc3"]
+[ext_resource type="PackedScene" uid="uid://b1gxc3gny0x5q" path="res://settings.tscn" id="7_5xung"]
+
+[node name="esc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gf7ex")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 10.0
+offset_right = 132.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_n0dmg")
+theme_override_font_sizes/font_size = 100
+text = "PAUSED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 162.0
+offset_right = 24.0
+offset_bottom = 202.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ir2jh")
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
+icon = ExtResource("3_8dgsv")
+
+[node name="Button4" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ir2jh")
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+icon = ExtResource("5_l4hc3")
+alignment = 0
+
+[node name="Button2" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ir2jh")
+theme_override_font_sizes/font_size = 30
+text = "MENU"
+icon = ExtResource("4_38oxy")
+alignment = 0
+
+[node name="Button3" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ir2jh")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+icon = ExtResource("5_iyic3")
+alignment = 0
+
+[node name="settings" parent="." instance=ExtResource("7_5xung")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
